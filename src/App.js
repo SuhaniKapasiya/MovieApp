@@ -51,9 +51,39 @@ const App = () => {
   }, [filters, movies]);
 
   return (
-    <div>
+    <div className=" bg-gray-700 text-white">
       <h1>Movies</h1>
       <div>
+      <label>
+          <input
+            type="checkbox"
+            name="language"
+            value="Malayalam"
+            checked={filters.language === "Malayalam"}
+            onChange={handleCheckboxChange}
+          />
+          Malayalam
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="language"
+            value="Kannada"
+            checked={filters.language === "Kannada"}
+            onChange={handleCheckboxChange}
+          />
+          Kannada
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="language"
+            value="Tamil"
+            checked={filters.language === "Tamil"}
+            onChange={handleCheckboxChange}
+          />
+          Tamil
+        </label>
         <label>
           <input
             type="checkbox"
@@ -123,9 +153,13 @@ const App = () => {
         {/* Add checkboxes for other genres */}
       </div>
       <ul>
-        {filteredMovies.map((movie, index) => (
-          <MovieList key={index} movie={movie} />
-        ))}
+        <div className="flex bg-gray-700 flex-wrap">
+          {filteredMovies.map((movie, index) => (
+            <div key={index} className="flex">
+              <MovieList movie={movie} />
+            </div>
+          ))}
+        </div>
       </ul>
     </div>
   );
