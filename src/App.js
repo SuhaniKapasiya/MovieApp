@@ -9,17 +9,20 @@ const App = () => {
 
   useEffect(() => {
     setMovies(data);
-    
+
     setFilteredMovies(data);
   }, []);
 
   // Handle checkbox change event
   const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
+    const { name, checked, value } = event.target;
+    console.log("checked: ", name, checked, value);
+    // return
     setFilters({
       ...filters,
-      [name]: checked,
+      [name]: value,
     });
+    // console.log("filters: ", filters);
   };
 
   // Filter movies based on selected criteria
